@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Mainpage.scss';
 class Mainpage extends React.Component {
     
     constructor(props : any) {
@@ -15,7 +15,7 @@ class Mainpage extends React.Component {
         .then(
           (result) => {
             this.setState({
-              tempData: { temp: result.temp, time: result.time}
+              tempData: { temp: result.temperature, humid: result.humidity ,time: result.time}
             });
           }, (err) => {
 
@@ -26,7 +26,8 @@ class Mainpage extends React.Component {
         return (
             <div> 
                 <h2>Current temperature is {tempData.temp}℃.</h2>
-                <h2>Current time is {tempData.time}%.</h2>
+                <h2>Current humidity is {tempData.humid}%.</h2>
+                <h2>Current time is {tempData.time}.</h2>
             </div>
         )
         
