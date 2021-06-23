@@ -9,11 +9,26 @@ class Mainpage extends React.Component {
         };
       }
     componentDidMount() {
-        const url : string = "http://192.168.0.39:3000/getTemp";
-        fetch(url)
+        const url : string =  "http://localhost:3000/temperature"
+        // "http://192.168.0.39:3000/getTemp";
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({  query : `{  tempData {
+              time
+              temperature
+              humidity
+            }
+          }`
+        })
+        })
         .then(res => res.json())
         .then(
           (result) => {
+            result = result.data.tempData;
             this.setState({
               tempData: { temp: result.temperature, humid: result.humidity ,time: result.time}
             });
