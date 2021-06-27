@@ -2,6 +2,7 @@ import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Mainpage from './Mainpage'
+import Thermometer from './Thermometer'
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,7 +17,12 @@ function App() {
       <div>
         <nav className="navbar navbar-light bg-light">
           <ul className="nav nav-pills">
-            <li className="nav-items"><Link to ="/" className="nav-link">Home</Link></li>
+            <li className="nav-items">
+              <Link to ="/" className="nav-link">Home</Link>
+            </li>
+            <li className="nav-items">
+              <Link to ="/thermometer" className="nav-link">Thermometer</Link>
+              </li>
             <li className="nav-items" >
               <Link to="/about" className="nav-link">About</Link>
             </li>
@@ -24,17 +30,18 @@ function App() {
         </nav>
       </div>
       <Switch>
+      <Route path="/thermometer">
+            <Thermometer/>
+          </Route>
           <Route path="/about">
             <About />
           </Route>
           <Route path="/">
-          <Mainpage/>
+            <Mainpage/>
           </Route>
+          
         </Switch>
     </Router>
-    
-
-
     </div>
   );
 }
