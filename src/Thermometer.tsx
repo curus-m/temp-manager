@@ -42,7 +42,7 @@ class Thermometer extends React.Component {
         //         {tempData.time} / {tempData.temperature}℃ / {tempData.humidity}%
         //     </div>
         // );
-        const graphData : Object = {
+        const temperatureData : Object = {
           datasets: [
             // 表示するデータセット
             {
@@ -55,19 +55,21 @@ class Thermometer extends React.Component {
                 "#FF0000"
               ],
               borderColor: "#FF0000"
-            },
-            {
-              data: tempDatas,
-              label: '湿度',
-              parsing: {
-                yAxisKey: 'humidity'
-              },
-              backgroundColor: [
-                "#0000FF"
-              ],
-              borderColor: "#0000FF"
             }
           ]
+        }
+        const humidityData : Object = {
+          datasets: [{
+            data: tempDatas,
+            label: '湿度',
+            parsing: {
+              yAxisKey: 'humidity'
+            },
+            backgroundColor: [
+              "#0000FF"
+            ],
+            borderColor: "#0000FF"
+          }]
         }
         const graphOptions : Object = {
             parsing: {
@@ -77,8 +79,13 @@ class Thermometer extends React.Component {
         return (
             <div>
                 {/* {tempDataList} */}
-                <div>
-                  <Line data={graphData} type="line" options={graphOptions}/>
+                <div className="temperature">
+                  <h3>Temperature</h3>
+                  <Line data={temperatureData} type="line" options={graphOptions}/>
+                </div>
+                <div className="humidity">
+                  <h3>Humidity</h3>
+                  <Line data={humidityData} type="line" options={graphOptions}/>
                 </div>
             </div>
             

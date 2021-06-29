@@ -1,34 +1,31 @@
 import React from 'react';
-// import logo from './logo.svg';
-import './App.css';
 import Mainpage from './Mainpage'
 import Thermometer from './Thermometer'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route, Link
 } from "react-router-dom";
+import './App.scss';
+import {Navbar, Nav} from 'react-bootstrap';
 
 function App() {
+  // function myFunction() {
+  //   this.class 
+  // }
   return (
     <div className="App">
       <Router>
-      <div>
-        <nav className="navbar navbar-light bg-light">
-          <ul className="nav nav-pills">
-            <li className="nav-items">
-              <Link to ="/" className="nav-link">Home</Link>
-            </li>
-            <li className="nav-items">
-              <Link to ="/thermometer" className="nav-link">Thermometer</Link>
-              </li>
-            <li className="nav-items" >
-              <Link to="/about" className="nav-link">About</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+        <Navbar bg="success" expand="lg">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Link to="/"  className="nav-link">Home</Link>
+            <Link to="/thermometer" className="nav-link">Thermometer</Link>
+            <Link to="/about" className="nav-link">About</Link>
+          </Nav>
+        </Navbar.Collapse>
+        </Navbar>
       <Switch>
       <Route path="/thermometer">
             <Thermometer/>
@@ -39,7 +36,6 @@ function App() {
           <Route path="/">
             <Mainpage/>
           </Route>
-          
         </Switch>
     </Router>
     </div>

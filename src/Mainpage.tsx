@@ -41,9 +41,9 @@ class Mainpage extends React.Component {
         const { tempData } : any= this.state;
         return (
             <div> 
-                <h2>Current temperature is {tempData.temp}℃.</h2>
-                <h2>Current humidity is {tempData.humid}%.</h2>
-                <h2>Current time is {tempData.time}.</h2>
+                <h3>Current temperature is {tempData.temp}℃.</h3>
+                <h3>Current humidity is {tempData.humid}%.</h3>
+                <h3>Current time is {tempData.time}.</h3>
             </div>
         )
         
