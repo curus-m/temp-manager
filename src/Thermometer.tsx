@@ -1,6 +1,6 @@
 import React from 'react';
 import './Thermometer.scss';
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 class Thermometer extends React.Component {
     constructor(props : any) {
         super(props);
@@ -37,26 +37,48 @@ class Thermometer extends React.Component {
     }
     render(){
         const { tempDatas } : any= this.state;
-        const tempDataList = tempDatas.map((tempData : any) => 
-            <div key="{tempData.time}"> 
-                {tempData.time} / {tempData.temperature}℃ / {tempData.humidity}%
-            </div>
-        );
+        // const tempDataList = tempDatas.map((tempData : any) => 
+        //     <div key="{tempData.time}"> 
+        //         {tempData.time} / {tempData.temperature}℃ / {tempData.humidity}%
+        //     </div>
+        // );
         const graphData : Object = {
-          labels : ['3','6','9','12','15','18','21','24','27','30'],
           datasets: [
             // 表示するデータセット
             {
               data: tempDatas,
-              label: '温度'
+              label: '温度',
+              parsing: {
+                yAxisKey: 'temperature'
+              },
+              backgroundColor: [
+                "#FF0000"
+              ],
+              borderColor: "#FF0000"
             },
+            {
+              data: tempDatas,
+              label: '湿度',
+              parsing: {
+                yAxisKey: 'humidity'
+              },
+              backgroundColor: [
+                "#0000FF"
+              ],
+              borderColor: "#0000FF"
+            }
           ]
+        }
+        const graphOptions : Object = {
+            parsing: {
+                xAxisKey: 'time'
+            }
         }
         return (
             <div>
                 {/* {tempDataList} */}
                 <div>
-                  <Bar data={graphData} type="Bar" />
+                  <Line data={graphData} type="line" options={graphOptions}/>
                 </div>
             </div>
             
