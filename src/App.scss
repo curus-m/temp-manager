@@ -36,10 +36,6 @@
     transform: rotate(360deg);
   }
 }
-
 .nav-link {
-  &:hover {
-    color: white;  
-  }
-  color: white;
+  color: rgb(255, 255, 255) 
 }
