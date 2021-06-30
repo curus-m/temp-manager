@@ -4,12 +4,14 @@
 
 # Feature
 
-Checking temperature, humidity by every 600 secs.
+Checking temperature, humidity by every 1200 secs.
 
 # Device
 
-DS18B20 Sensor with Raspberry Pi 4
+DHT11 Sensor with Raspberry Pi 4
 
 # Progress
 
-Just main page...
+Main Page
+Temperature Graph
+Humidity Graph
