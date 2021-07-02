@@ -54,38 +54,64 @@ class Thermometer extends React.Component {
               backgroundColor: [
                 "#FF0000"
               ],
-              borderColor: "#FF0000"
+              borderColor: "#FF0000",
+              yAxisID: 'tempAxis'
+            },
+            {
+              data: tempDatas,
+              label: '湿度',
+              parsing: {
+                yAxisKey: 'humidity'
+              },
+              backgroundColor: [
+                "#0000FF"
+              ],
+              borderColor: "#0000FF",
+              yAxisID: 'humidAxis'
             }
           ]
-        }
-        const humidityData : Object = {
-          datasets: [{
-            data: tempDatas,
-            label: '湿度',
-            parsing: {
-              yAxisKey: 'humidity'
-            },
-            backgroundColor: [
-              "#0000FF"
-            ],
-            borderColor: "#0000FF"
-          }]
         }
         const graphOptions : Object = {
             parsing: {
                 xAxisKey: 'time'
-            }
+            },
+            scales: {
+              'tempAxis' : {
+                bounds: "data",
+                axis: "y",
+                position: 'left',
+                ticks: {
+                  max: 50,
+                  min: -10
+                },
+                title: {
+                  color: 'red',
+                  display: true,
+                  text: '温度'
+                }
+              }, 
+              'humidAxis': {
+                bounds: "data",
+                axis: "y",
+                position: 'right',
+                ticks: {
+                  max: 100,
+                  min: 0
+                },
+                title: {
+                  color: 'blue',
+                  display: true,
+                  text: '湿度'
+                }
+              }
+          }
         }
         return (
             <div>
                 {/* {tempDataList} */}
                 <div className="temperature">
-                  <h3>Temperature</h3>
+                  <h3>Temperature / Humidity</h3>
                   <Line data={temperatureData} type="line" options={graphOptions}/>
-                </div>
-                <div className="humidity">
-                  <h3>Humidity</h3>
-                  <Line data={humidityData} type="line" options={graphOptions}/>
                 </div>
             </div>
             
