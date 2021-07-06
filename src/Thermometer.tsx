@@ -102,7 +102,8 @@ class Thermometer extends React.Component {
                   color: 'blue',
                   display: true,
                   text: '湿度'
-                }
+                },
+                
               }
           }
         }
