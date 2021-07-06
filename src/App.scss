@@ -1,18 +1,8 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,14 +18,66 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .nav-link {
   color: rgb(255, 255, 255) 
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+li.icon {
+  display: none;
+}
+$pc: 800px; 
+@media screen and (max-width: $pc) {
+  .nav{
+    display: block;
+  }
+  .navbar {
+    padding: 1.5rem 1rem;
+  }
+  .icon:hover {
+    background-color: #ddd;
+  }
+  li.nav-items {
+    display: none;
+  }
+  li.icon {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 4px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  li.nav-items.responsive {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  li.icon {
+    position: absolute;
+    right: 0;
+    top: 7px;
+  }
+  .fa {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: inherit;
+    text-rendering: auto;
+  }
+  .fa-bars {
+    color: rgb(241, 241, 241);
+    font-size: 2rem;
+  }
+  .fa-bars::before {
+      content: "\f0c9";
+  }
 }
