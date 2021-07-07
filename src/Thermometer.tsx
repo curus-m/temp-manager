@@ -55,7 +55,12 @@ class Thermometer extends React.Component {
                 "#FF0000"
               ],
               borderColor: "#FF0000",
-              yAxisID: 'tempAxis'
+              yAxisID: 'tempAxis',
+              fill: {
+                target: {value: 28},
+                above: 'rgb(247, 158, 178)',   // Area will be red above the origin
+                below: 'rgb(255, 255, 255,0)'
+              }
             },
             {
               data: tempDatas,
@@ -67,7 +72,12 @@ class Thermometer extends React.Component {
                 "#0000FF"
               ],
               borderColor: "#0000FF",
-              yAxisID: 'humidAxis'
+              yAxisID: 'humidAxis',
+              fill: {
+                target: {value: 70},
+                above: 'rgb(148, 157, 255)',   // Area will be red above the origin
+                below: 'rgb(255, 255, 255,0)'
+              }
             }
           ]
         }
