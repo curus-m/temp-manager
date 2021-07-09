@@ -1,6 +1,7 @@
 import React from 'react';
-import Mainpage from './Mainpage'
-import Thermometer from './Thermometer'
+import Mainpage from './Mainpage/Mainpage'
+import Thermometer from './Thermometer/Thermometer'
+import Statistics from './Statistics/Statistics'
 import {
   BrowserRouter as Router,
   Switch,
@@ -38,6 +39,9 @@ class App extends React.Component<{}, any> {
                   <Link to ="/thermometer" className="nav-link">Thermometer</Link>
                 </li>
                 <li className={`nav-items ${isExpanded ? "responsive" : ""}`}>
+                  <Link to="/statistics" className="nav-link">Statistics</Link>
+                </li>
+                <li className={`nav-items ${isExpanded ? "responsive" : ""}`}>
                   <Link to="/about" className="nav-link">About</Link>
                 </li>
                 <li className="icon"  onClick={e => this.handleToggle(e)}>
@@ -49,6 +53,9 @@ class App extends React.Component<{}, any> {
           <Switch>
             <Route path="/thermometer">
               <Thermometer/>
+            </Route>
+            <Route path="/statistics">
+              <Statistics/>
             </Route>
             <Route path="/about">
               <About />

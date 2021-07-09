@@ -1,11 +1,11 @@
 import React from 'react';
-import './Thermometer.scss';
+import './Statistics.scss';
 import { Line } from 'react-chartjs-2';
-class Thermometer extends React.Component {
+class Statistics extends React.Component {
     constructor(props : any) {
         super(props);
         this.state = {
-          tempDatas: [{ temp: "", time: ""}],
+          tempDatas: [{}],
         };
     }
     componentDidMount() {
@@ -16,18 +16,22 @@ class Thermometer extends React.Component {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
           },
-          body: JSON.stringify({  query : `{  tempDatas {
-              time
-              temperature
-              humidity
-            }
+          body: JSON.stringify(
+            {  query : `{  
+                tempMaxMins {
+                    time
+                    maxtemp
+                    maxhumidity
+                    mintemp
+                    minhumidity
+                }
           }`
         })
         })
         .then(res => res.json())
         .then(
           (result) => {
-            result = result.data.tempDatas;
+            result = result.data.tempMaxMins;
             this.setState({
               tempDatas: result
             });
@@ -37,47 +41,31 @@ class Thermometer extends React.Component {
     }
     render(){
         const { tempDatas } : any= this.state;
-        // const tempDataList = tempDatas.map((tempData : any) => 
-        //     <div key="{tempData.time}"> 
-        //         {tempData.time} / {tempData.temperature}℃ / {tempData.humidity}%
-        //     </div>
-        // );
         const temperatureData : Object = {
           datasets: [
-            // 表示するデータセット
             {
               data: tempDatas,
-              label: '温度',
+              label: '最高気温',
               parsing: {
-                yAxisKey: 'temperature'
+                yAxisKey: 'maxtemp'
               },
               backgroundColor: [
                 "#FF0000"
               ],
               borderColor: "#FF0000",
-              yAxisID: 'tempAxis',
-              fill: {
-                target: {value: 28},
-                above: 'rgb(247, 158, 178)',   // Area will be red above the origin
-                below: 'rgb(255, 255, 255,0)'
-              }
+              yAxisID: 'tempAxis'
             },
             {
               data: tempDatas,
-              label: '湿度',
+              label: '最高湿度',
               parsing: {
-                yAxisKey: 'humidity'
+                yAxisKey: 'maxhumidity'
               },
               backgroundColor: [
                 "#0000FF"
               ],
               borderColor: "#0000FF",
-              yAxisID: 'humidAxis',
-              fill: {
-                target: {value: 70},
-                above: 'rgb(148, 157, 255)',   // Area will be red above the origin
-                below: 'rgb(255, 255, 255,0)'
-              }
+              yAxisID: 'humidAxis'
             }
           ]
         }
@@ -121,7 +109,7 @@ class Thermometer extends React.Component {
             <div>
                 {/* {tempDataList} */}
                 <div className="temperature">
-                  <h3>Temperature / Humidity</h3>
+                  <h3>Max Temperature / Humidity</h3>
                   <Line data={temperatureData} type="line" options={graphOptions}/>
                 </div>
             </div>
@@ -131,6 +119,5 @@ class Thermometer extends React.Component {
     }
 
 }
-    
 
-export default Thermometer; 
+export default Statistics; 
