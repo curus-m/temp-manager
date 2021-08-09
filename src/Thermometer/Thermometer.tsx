@@ -37,11 +37,6 @@ class Thermometer extends React.Component {
     }
     render(){
         const { tempDatas } : any= this.state;
-        // const tempDataList = tempDatas.map((tempData : any) => 
-        //     <div key="{tempData.time}"> 
-        //         {tempData.time} / {tempData.temperature}℃ / {tempData.humidity}%
-        //     </div>
-        // );
         const temperatureData : Object = {
           datasets: [
             // 表示するデータセット

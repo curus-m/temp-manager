@@ -8,6 +8,7 @@ import {
   Route, Link
 } from "react-router-dom";
 import './App.scss';
+
 class App extends React.Component<{}, any> { 
     constructor(props : any) {
       super(props);
@@ -15,7 +16,7 @@ class App extends React.Component<{}, any> {
         isExpanded: false
       };
     }
-  
+
   handleToggle(e : any) {
     e.preventDefault();
     console.log("click!")
@@ -23,7 +24,10 @@ class App extends React.Component<{}, any> {
       isExpanded: !this.state.isExpanded
     });
   }
+
+  
   render() {
+    document.title = "Temperature App";
     const { isExpanded } = this.state;
 
     return (

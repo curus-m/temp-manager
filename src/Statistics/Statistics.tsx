@@ -6,9 +6,12 @@ class Statistics extends React.Component {
         super(props);
         this.state = {
           tempDatas: [{}],
+          dailyDatas: []
         };
     }
     componentDidMount() {
+        // todo: get 1 week weather data
+        // get temperature data
         const url : string = "http://192.168.0.39:3000/temperature";
         fetch(url, {
           method: 'POST',
@@ -24,23 +27,41 @@ class Statistics extends React.Component {
                     maxhumidity
                     mintemp
                     minhumidity
-                }
+                },
+                dailyTemperatures {
+                  time
+                  temperature
+                  humidity
+                  mintemp
+                  maxtemp
+                  weatherid
+              },
           }`
         })
         })
         .then(res => res.json())
         .then(
           (result) => {
-            result = result.data.tempMaxMins;
             this.setState({
-              tempDatas: result
+              tempDatas: result.data.tempMaxMins,
+              dailyDatas: result.data.dailyTemperatures
             });
           }, (err) => {
 
           });
     }
     render(){
-        const { tempDatas } : any= this.state;
+        const { tempDatas } : any = this.state;
+        const { dailyDatas } : any = this.state;
+        const listItems = dailyDatas.map((data : any) =>  
+          <div className="weatherItem">
+            <div>{data.time}</div>
+            <div>{data.weatherid}</div>
+            <div>{data.temperature}</div>
+            <div>{data.maxtemp}</div>
+            <div>{data.mintemp}</div>
+            <div>{data.humidity}</div>
+          </div>);
         const temperatureData : Object = {
           datasets: [
             {
@@ -106,11 +127,22 @@ class Statistics extends React.Component {
           }
         }
         return (
-            <div>
+            <div className="container">
                 {/* {tempDataList} */}
                 <div className="temperature">
                   <h3>Max Temperature / Humidity</h3>
                   <Line data={temperatureData} type="line" options={graphOptions}/>
+                </div>
+                <div className="dailyWeatherBox">
+                  <div className="weatherHeader">
+                    <div>Date</div>
+                    <div>Weather</div>
+                    <div>Temperature</div>
+                    <div>High Temperature</div>
+                    <div>Low Temperature</div>
+                    <div>Humidity</div>
+                  </div>
+                 {listItems}
                 </div>
             </div>
             

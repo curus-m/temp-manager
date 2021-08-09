@@ -1,0 +1,16 @@
+.dailyWeatherBox {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    position: relative;
+}
+.weatherHeader {
+    background-color: grey;
+}
+.weatherItem {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.container {
+    display: block;
+}
