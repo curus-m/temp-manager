@@ -5,7 +5,7 @@
     position: relative;
 }
 .weatherHeader {
-    background-color: grey;
+    background-color: rgb(185, 185, 185);
 }
 .weatherItem {
     margin-left: 5px;
@@ -13,4 +13,7 @@
 }
 .container {
     display: block;
+}
+.weatherDescription {
+    font-size: small;
 }

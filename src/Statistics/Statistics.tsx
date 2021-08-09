@@ -34,7 +34,9 @@ class Statistics extends React.Component {
                   humidity
                   mintemp
                   maxtemp
-                  weatherid
+                  weathername
+                  description
+                  icons
               },
           }`
         })
@@ -56,11 +58,16 @@ class Statistics extends React.Component {
         const listItems = dailyDatas.map((data : any) =>  
           <div className="weatherItem">
             <div>{data.time}</div>
-            <div>{data.weatherid}</div>
-            <div>{data.temperature}</div>
-            <div>{data.maxtemp}</div>
-            <div>{data.mintemp}</div>
-            <div>{data.humidity}</div>
+            <div>
+              <h3>{data.weathername}</h3>
+            <span className="weatherDescription">
+              {data.description}
+            </span>
+            </div>
+            <div>{data.temperature}℃</div>
+            <div>{data.maxtemp}℃</div>
+            <div>{data.mintemp}℃</div>
+            <div>{data.humidity}%</div>
           </div>);
         const temperatureData : Object = {
           datasets: [
@@ -135,14 +142,14 @@ class Statistics extends React.Component {
                 </div>
                 <div className="dailyWeatherBox">
                   <div className="weatherHeader">
-                    <div>Date</div>
-                    <div>Weather</div>
-                    <div>Temperature</div>
-                    <div>High Temperature</div>
-                    <div>Low Temperature</div>
-                    <div>Humidity</div>
+                      <div>Date</div>
+                      <div>Weather</div>
+                      <div>Temperature</div>
+                      <div>High Temperature</div>
+                      <div>Low Temperature</div>
+                      <div>Humidity</div>
                   </div>
-                 {listItems}
+                  {listItems} 
                 </div>
             </div>
             
