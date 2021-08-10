@@ -59,10 +59,10 @@ class Statistics extends React.Component {
           <div className="weatherItem">
             <div>{data.time}</div>
             <div>
-              <h3>{data.weathername}</h3>
-            <span className="weatherDescription">
+              {data.icons.map((item : any) => <img src={process.env.REACT_APP_ICON_URL+item+".png"} alt={data.weathername}/>)}
+            </div>
+            <div className="weatherDescription">
               {data.description}
-            </span>
             </div>
             <div>{data.temperature}℃</div>
             <div>{data.maxtemp}℃</div>
