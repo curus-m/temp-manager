@@ -9,7 +9,7 @@ class Thermometer extends React.Component {
         };
     }
     componentDidMount() {
-        const url : string = "http://192.168.0.39:3000/temperature";
+        const url : string = "http://192.168.0.39:3001/temperature";
         fetch(url, {
           method: 'POST',
           headers: {

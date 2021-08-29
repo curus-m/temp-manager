@@ -12,7 +12,7 @@ class Statistics extends React.Component {
     componentDidMount() {
         // todo: get 1 week weather data
         // get temperature data
-        const url : string = "http://192.168.0.39:3000/temperature";
+        const url : string = "http://192.168.0.39:3001/temperature";
         fetch(url, {
           method: 'POST',
           headers: {
@@ -56,9 +56,9 @@ class Statistics extends React.Component {
         const { tempDatas } : any = this.state;
         const { dailyDatas } : any = this.state;
         const listItems = dailyDatas.map((data : any) =>  
-          <div className="weatherItem">
+          <div className="weatherItems">
             <div>{data.time}</div>
-            <div>
+            <div className="weatherIconBox">
               {data.icons.map((item : any) => <img src={process.env.REACT_APP_ICON_URL+item+".png"} alt={data.weathername}/>)}
             </div>
             <div className="weatherDescription">
@@ -143,7 +143,8 @@ class Statistics extends React.Component {
                 <div className="dailyWeatherBox">
                   <div className="weatherHeader">
                       <div>Date</div>
-                      <div>Weather</div>
+                      <div className="weatherRow">Weather</div>
+                      <div className="weatherHeader">Description</div>
                       <div>Temperature</div>
                       <div>High Temperature</div>
                       <div>Low Temperature</div>

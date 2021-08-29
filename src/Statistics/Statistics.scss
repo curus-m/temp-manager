@@ -6,14 +6,25 @@
 }
 .weatherHeader {
     background-color: rgb(185, 185, 185);
+  
+    .weatherRow {
+        height: 195px;
+    }
+    .weatherHeader {
+        height: 40px;
+    }
 }
-.weatherItem {
+.weatherItems {
     margin-left: 5px;
     margin-right: 5px;
+    width: 100px;
 }
 .container {
     display: block;
 }
 .weatherDescription {
     font-size: small;
+}
+.weatherIconBox {
+    height: 195px;
 }

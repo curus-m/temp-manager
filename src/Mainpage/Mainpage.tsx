@@ -9,7 +9,7 @@ class Mainpage extends React.Component {
         };
       }
     componentDidMount() {
-        const url : string = "http://192.168.0.39:3000/temperature";
+        const url : string = "http://192.168.0.39:3001/temperature";
           // "http://localhost:3000/temperature"
         // "http://192.168.0.39:3000/getTemp";
         fetch(url, {
